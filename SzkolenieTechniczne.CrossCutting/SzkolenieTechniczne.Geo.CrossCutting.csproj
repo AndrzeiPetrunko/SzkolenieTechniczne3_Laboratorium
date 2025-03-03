@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SzkolenieTechniczne.CommonCrossCutting\SzkolenieTechniczne.CommonCrossCutting.csproj" />
+    <ProjectReference Include="..\SzkolenieTechniczne.CommonCrossCutting\SzkolenieTechniczne.Common.CrossCutting.csproj" />
+    <ProjectReference Include="..\SzkolenieTechniczne.GeoStorage\SzkolenieTechniczne.Geo.Storage.csproj" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SzkolenieTechniczne.CommonCrossCutting\SzkolenieTechniczne.CommonCrossCutting.csproj" />
+    <ProjectReference Include="..\SzkolenieTechniczne.CommonCrossCutting\SzkolenieTechniczne.Common.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

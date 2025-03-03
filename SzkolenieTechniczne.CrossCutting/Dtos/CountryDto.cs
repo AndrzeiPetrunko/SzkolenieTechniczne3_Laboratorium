@@ -19,6 +19,6 @@ namespace SzkolenieTechniczne.CrossCutting.Dtos
         [MaxLength(3)]
         [MinLength(2)]
         [Required]
-        public string? Aplha3Code { get; set; }
+        public string? Alpha3Code { get; set; }
     }
 }
