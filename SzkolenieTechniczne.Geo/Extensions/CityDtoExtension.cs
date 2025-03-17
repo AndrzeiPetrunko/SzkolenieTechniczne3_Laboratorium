@@ -10,7 +10,6 @@ namespace SzkolenieTechniczne.Geo.Extensions
             return new City
             {
                 CountryId = dto.CountryId,
-                Country = dto.Country,
                 Id = dto.Id,
             };
         }

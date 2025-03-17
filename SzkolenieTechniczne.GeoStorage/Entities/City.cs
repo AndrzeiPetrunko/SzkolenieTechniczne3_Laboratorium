@@ -9,6 +9,7 @@ namespace SzkolenieTechniczne.Geo.Storage.Entities
         [Required]
         public Guid CountryId { get; set; }
         public Country? Country { get; set; }
+        public string? Name { get; set; }
         public ICollection<CityTranslation>? Translations { get; set; }
     }
 }

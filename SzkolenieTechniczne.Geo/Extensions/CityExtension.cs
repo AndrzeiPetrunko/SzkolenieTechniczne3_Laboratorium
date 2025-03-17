@@ -16,7 +16,6 @@ namespace SzkolenieTechniczne.Geo.Extensions
                 Id = entity.Id,
                 Name = new LocalizedString(entity.Translations.Select(t => new KeyValuePair<string, string>(t.LanguageCode, t.Name))),
                 CountryId = entity.CountryId,
-                Country = entity.Country,
             };
             return result;
         }

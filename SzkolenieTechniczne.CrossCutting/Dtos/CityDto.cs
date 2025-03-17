@@ -16,7 +16,6 @@ namespace SzkolenieTechniczne.Geo.CrossCutting.Dtos
         public LocalizedString? Name { get; set; }  
 
         [Required]
-        public Guid CountryId { get; set; }  
-        public Country? Country { get; set; }  
+        public Guid CountryId { get; set; }
     }
 }
