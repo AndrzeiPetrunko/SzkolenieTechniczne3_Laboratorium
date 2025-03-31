@@ -10,7 +10,7 @@ using SzkolenieTechniczne.Common.Storage.Entities;
 namespace SzkolenieTechniczne.Company.Storage.Entities
 {
     [Table("JobPositionTranslations", Schema = "Company")]
-    class JobPositionTranslation : BaseTranslation
+    public class JobPositionTranslation : BaseTranslation
     {
         [Required]
         public Guid JobPositionId { get; set; }

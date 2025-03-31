@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SzkolenieTechniczne.Company.Storage\SzkolenieTechniczne.Company.Storage.csproj" />
+  </ItemGroup>
+
 </Project>

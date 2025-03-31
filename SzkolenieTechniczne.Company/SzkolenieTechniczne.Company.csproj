@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SzkolenieTechniczne.Company.CrossCutting\SzkolenieTechniczne.Company.CrossCutting.csproj" />
+    <ProjectReference Include="..\SzkolenieTechniczne.Company.Storage\SzkolenieTechniczne.Company.Storage.csproj" />
+  </ItemGroup>
+
 </Project>
