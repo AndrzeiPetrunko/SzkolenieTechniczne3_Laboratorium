@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SzkolenieTechniczne.Common.Storage.Entities;
+using SzkolenieTechniczne.Common.CrossCutting.Interfaces;
 
 namespace SzkolenieTechniczne.Company.Storage.Entities
 {
@@ -19,7 +20,7 @@ namespace SzkolenieTechniczne.Company.Storage.Entities
         public string ExternalSourceName { get; set; }
         public string ExternalId { get; set; }
         public DateTime? LastSynchronizedOn { get; set; }
-        public ICollection<CoutryTranslation> Translations { get; set; } = new List<CountryTranslation>();
+        public ICollection<CountryTranslation> Translations { get; set; } = new List<CountryTranslation>();
 
     }
 }
