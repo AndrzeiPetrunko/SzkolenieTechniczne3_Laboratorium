@@ -8,59 +8,63 @@ using SzkolenieTechniczne.Geo.Storage.Entities;
 using Microsoft.EntityFrameworkCore;
 using SzkolenieTechniczne.Geo.Extensions;
 using SzkolenieTechniczne.CrossCutting.Dtos;
+using SzkolenieTechniczne.Api.Common.Service;
+using SzkolenieTechniczne.Geo.CrossCutting.Dtos;
 
 namespace SzkolenieTechniczne.Geo.Services
 {
-    public class CountryService
+    public class CountryService : CrudServiceBase<GeoDbContext, Country, CountryDto>
     {
         private readonly GeoDbContext _geoDbContext;
 
-        public CountryService(GeoDbContext geoDbContext)
+        public CountryService(GeoDbContext geoDbContext) : base(geoDbContext) 
         {
             _geoDbContext = geoDbContext;
         }
+        protected override IQueryable<Country> BuildQueryWithIncludes(DbSet<Country> dbSet)
+        {
+            return dbSet.Include(x => x.Translations);
+        }
+
 
         public async Task<CountryDto> GetById(Guid id)
         {
-            var country = await _geoDbContext
-                .Set<Country>()
-                .Include(x => x.Translations)
-                .AsNoTracking()
-                .Where(e => e.Id.Equals(id))
-                .SingleOrDefaultAsync();
+            var country = await base.GetById(id);
 
-            return country?.ToDto();
+            return country.ToDto();
         }
 
         public async Task<IEnumerable<CountryDto>> Get()
         {
-            var cities = await _geoDbContext
-                .Set<Country>()
-                .Include(x => x.Translations)
-                .AsNoTracking()
-                .Select(e => e.ToDto())
-                .ToListAsync();
+            var countries = await base.Get();
 
-            return cities;
+            return countries.Select(e => e.ToDto());
         }
 
         public async Task<CrudOperationResult<CountryDto>> Create(CountryDto dto)
         {
             var entity = dto.ToEntity();
 
-            _geoDbContext
-                .Set<Country>()
-                .Add(entity);
+            var entityId = await base.Create(entity);
 
             await _geoDbContext.SaveChangesAsync();
 
-            var newDto = await GetById(entity.Id);
+            var newDto = await GetById(entityId);
 
             return new CrudOperationResult<CountryDto>
             {
                 Result = newDto,
                 Status = CrudOperationResultStatus.Success
             };
+        }
+        public async Task<CrudOperationResult<CountryDto>> Delete(Guid id)
+        {
+            return await base.Delete(id);
+        }
+        public async Task<CrudOperationResult<CountryDto>> Update(CountryDto dto)
+        {
+            var entity = dto.ToEntity();
+            return await base.Update(entity);
         }
     }
 }

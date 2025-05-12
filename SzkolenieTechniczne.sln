@@ -24,11 +24,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Company", "Company", "{DF817EA2-5DDE-4941-9ECB-F4C44578C3D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzkolenieTechniczne.Company", "SzkolenieTechniczne.Company\SzkolenieTechniczne.Company.csproj", "{2A3D6FC7-2CD9-417A-904E-780FB445AB4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Company", "SzkolenieTechniczne.Company\SzkolenieTechniczne.Company.csproj", "{2A3D6FC7-2CD9-417A-904E-780FB445AB4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzkolenieTechniczne.Company.Storage", "SzkolenieTechniczne.Company.Storage\SzkolenieTechniczne.Company.Storage.csproj", "{0264FD15-763D-4549-9C7A-4DBA4B1E0FFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Company.Storage", "SzkolenieTechniczne.Company.Storage\SzkolenieTechniczne.Company.Storage.csproj", "{0264FD15-763D-4549-9C7A-4DBA4B1E0FFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzkolenieTechniczne.Company.CrossCutting", "SzkolenieTechniczne.Company.CrossCutting\SzkolenieTechniczne.Company.CrossCutting.csproj", "{4CCB8093-E1B3-442C-871C-54770122DEF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Company.CrossCutting", "SzkolenieTechniczne.Company.CrossCutting\SzkolenieTechniczne.Company.CrossCutting.csproj", "{4CCB8093-E1B3-442C-871C-54770122DEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzkolenieTechniczne.Common.Api", "SzkolenieTechniczne.Api.Common\SzkolenieTechniczne.Common.Api.csproj", "{2C87740B-DF93-4302-AA99-78065A1543AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{4CCB8093-E1B3-442C-871C-54770122DEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CCB8093-E1B3-442C-871C-54770122DEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CCB8093-E1B3-442C-871C-54770122DEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C87740B-DF93-4302-AA99-78065A1543AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C87740B-DF93-4302-AA99-78065A1543AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C87740B-DF93-4302-AA99-78065A1543AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C87740B-DF93-4302-AA99-78065A1543AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{2A3D6FC7-2CD9-417A-904E-780FB445AB4A} = {DF817EA2-5DDE-4941-9ECB-F4C44578C3D3}
 		{0264FD15-763D-4549-9C7A-4DBA4B1E0FFC} = {DF817EA2-5DDE-4941-9ECB-F4C44578C3D3}
 		{4CCB8093-E1B3-442C-871C-54770122DEF1} = {DF817EA2-5DDE-4941-9ECB-F4C44578C3D3}
+		{2C87740B-DF93-4302-AA99-78065A1543AC} = {59ADA51B-360F-4186-B1BC-C4A87DB8FCFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE1A94CA-3C27-42D4-B301-1987538EE547}
