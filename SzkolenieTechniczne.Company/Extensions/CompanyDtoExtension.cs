@@ -1,20 +1,21 @@
 ﻿using SzkolenieTechniczne.Company.CrossCutting.Dtos;
+using SzkolenieTechniczne.Company.Storage.Entities;
 
 namespace SzkolenieTechniczne.Company.Extensions
 {
     public static class CompanyDtoExtension
     {
-        public static SzkolenieTechniczne.Company.Storage.Entities.Company ToEntity(this CompanyDto dto)
+        public static Storage.Entities.Company ToEntity(this CompanyDto dto)
         {
-            return new SzkolenieTechniczne.Company.Storage.Entities.Company
+            return new Storage.Entities.Company
             {
-                Address = dto.Address,
                 Name = dto.Name,
-                JobPositions = dto.JobPositions,
-                NIP = dto.NIP,
                 PhoneDirectional = dto.PhoneDirectional,
                 PhoneNumber = dto.PhoneNumber,
+                NIP = dto.NIP,
                 REGON = dto.REGON,
+                Address = dto.Address.ToEntity(),
+                JobPositions = dto.JobPositions?.Select(jp => jp.ToEntity()).ToList() ?? new List<JobPosition>()
             };
         }
     }

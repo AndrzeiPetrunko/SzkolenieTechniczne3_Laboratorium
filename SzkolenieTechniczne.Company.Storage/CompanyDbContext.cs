@@ -7,7 +7,7 @@ namespace SzkolenieTechniczne.Company.Storage
     public class CompanyDbContext : DbContext
     {
         private IConfiguration _configuration { get; }
-        public DbSet<SzkolenieTechniczne.Company.Storage.Entities.Company> Companies { get; set; }
+        public DbSet<Entities.Company> Companies { get; set; }
         public DbSet<CompanyAddress> CompanyAddresses { get; set; }
         public DbSet<ContactType> ContactTypes { get; set; }
         public DbSet<ContactTypeTranslation> ContactTypeTranslations { get; set; }
@@ -16,8 +16,7 @@ namespace SzkolenieTechniczne.Company.Storage
         public DbSet<JobPosition> JobPositions { get; set; }
         public DbSet<JobPositionTranslation> JobPositionTranslations { get; set; }
 
-        public CompanyDbContext(IConfiguration configuration)
-            : base()
+        public CompanyDbContext(IConfiguration configuration) : base()
         {
             _configuration = configuration;
         }
