@@ -1,58 +1,53 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SzkolenieTechniczne.Api.Common.Service;
 using SzkolenieTechniczne.CommonCrossCutting.Dtos;
 using SzkolenieTechniczne.Company.CrossCutting.Dtos;
+using SzkolenieTechniczne.Company.Extensions;
 using SzkolenieTechniczne.Company.Storage;
+
+using SzkolenieTechniczne.Company.Resolvers;
 
 namespace SzkolenieTechniczne.Company.Services
 {
-    public class CompanyService
+    namespace SzkolenieTechniczne.Company.Services
     {
-        private readonly CompanyDbContext _companyDbContext;
-
-        public CompanyService(CompanyDbContext geoDbContext)
+        public class CompanyService : CrudServiceBase<CompanyDbContext,
+            Storage.Entities.Company, CompanyDto>
         {
-            _companyDbContext = geoDbContext;
-        }
+            private readonly CountryIntegrationDataResolver _countryResolver;
+            private CompanyDbContext _companyDbContext;
 
-        public async Task<CompanyDto> GetById(Guid id)
-        {
-            var company = await _companyDbContext
-                .Set<Storage.Entities.Company>()
-                .AsNoTracking()
-                .Where(e => e.Id.Equals(id))
-                .SingleOrDefaultAsync();
-
-            return company?.ToDto();
-        }
-
-        public async Task<IEnumerable<CityDto>> Get()
-        {
-            var cities = await _companyDbContext
-                .Set<City>()
-                .Include(x => x.Translations)
-                .AsNoTracking()
-                .Select(e => e.ToDto())
-                .ToListAsync();
-
-            return cities;
-        }
-
-
-        public async Task<CrudOperationResult<CityDto>> Create(CityDto dto)
-        {
-            var entity = dto.ToEntity();
-
-            _companyDbContext
-                .Set<City>()
-                .Add(entity);
-
-            await _companyDbContext.SaveChangesAsync();
-
-            var newDto = await GetById(entity.Id);
-
-            return new CrudOperationResult<CityDto>
+            public CompanyService(CompanyDbContext companyDbContext, CountryIntegrationDataResolver countryResolver) : base(companyDbContext)
             {
-                Result = newDto,
-                Status = CrudOperationResultStatus.Success
+                _companyDbContext = companyDbContext;
+                _countryResolver = countryResolver;
             }
+
+            public async Task<CompanyDto> GetById(Guid id)
+            {
+                var city = await base.GetById(id);
+                return city.ToDto();
+            }
+
+            protected override IQueryable<Storage.Entities.Company> ConfigureFormIncludes(IQueryable<Storage.Entities.Company> linq)
+            {
+                return linq.Include(c => c.Address);
+            }
+
+            public async Task<IEnumerable<CompanyDto>> Get()
+            {
+                var companies = await base.Get();
+                return companies.Select(e => e.ToDto());
+            }
+
+            protected override async Task OnBeforeRecordCreatedAsync(CompanyDbContext dbContext, Storage.Entities.Company entity)
+            {
+                if (entity.Address != null)
+                {
+                    await _countryResolver.ResolveFor(entity.Address.CountryId);
+                }
+            }
+        }
+    }
+
 }

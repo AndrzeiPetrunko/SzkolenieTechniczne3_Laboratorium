@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Company
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Company.CrossCutting", "SzkolenieTechniczne.Company.CrossCutting\SzkolenieTechniczne.Company.CrossCutting.csproj", "{4CCB8093-E1B3-442C-871C-54770122DEF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SzkolenieTechniczne.Common.Api", "SzkolenieTechniczne.Api.Common\SzkolenieTechniczne.Common.Api.csproj", "{2C87740B-DF93-4302-AA99-78065A1543AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SzkolenieTechniczne.Common.Api", "SzkolenieTechniczne.Api.Common\SzkolenieTechniczne.Common.Api.csproj", "{2C87740B-DF93-4302-AA99-78065A1543AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

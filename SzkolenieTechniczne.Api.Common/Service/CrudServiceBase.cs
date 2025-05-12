@@ -72,15 +72,17 @@ namespace SzkolenieTechniczne.Api.Common.Service
                 Status = CrudOperationResultStatus.Success,
             };
         }
-        protected virtual IQueryable<TEntity> BuildQueryWithIncludes(DbSet<TEntity> dbSet)
+        protected virtual IQueryable<TEntity> ConfigureFormIncludes(IQueryable<TEntity> linq)
         {
-            return dbSet;
+            return linq;
         }
         protected async virtual Task<TEntity> GetById(Guid id)
         {
-            var entity = await BuildQueryWithIncludes(_dbContext.Set<TEntity>())
-                .AsNoTracking()
-                .Where(e => e.Id!.Equals(id))
+            var baseEntity = _dbContext
+                .Set<TEntity>()
+                .AsNoTracking();
+                
+            var entity = await ConfigureFormIncludes(baseEntity).Where(e => e.Id!.Equals(id))
                 .SingleOrDefaultAsync();
 
             return entity;

@@ -21,9 +21,9 @@ namespace SzkolenieTechniczne.Geo.Services
         {
             _geoDbContext = geoDbContext;
         }
-        protected override IQueryable<Country> BuildQueryWithIncludes(DbSet<Country> dbSet)
+        protected override IQueryable<Country> ConfigureFormIncludes(IQueryable<Country> linq)
         {
-            return dbSet.Include(x => x.Translations);
+            return linq.Include(x => x.Translations);
         }
 
 
