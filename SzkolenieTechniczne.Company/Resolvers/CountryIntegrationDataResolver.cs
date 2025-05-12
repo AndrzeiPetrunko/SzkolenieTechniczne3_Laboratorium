@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SzkolenieTechniczne.Company.Storage.Entities;
 using SzkolenieTechniczne.CrossCutting.Dtos;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace SzkolenieTechniczne.Company.Resolvers
 {
